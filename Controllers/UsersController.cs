@@ -10,14 +10,12 @@ using TeamTaskManagement.Services.Mappings;
 
 namespace TeamTaskManagement.Controllers
 {
-    [ApiController]
     [Route("users")]
+    [ApiController]
     [Authorize]
     public class UsersController(AppDbContext context) : BaseController
     {
         
-
-
         [HttpGet("me")]
         [Authorize]
         public async Task <IActionResult> GetMe()

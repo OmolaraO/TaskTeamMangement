@@ -13,8 +13,12 @@ namespace TeamTaskManagement
     {
         public static IServiceCollection ConfigureApplication(this IServiceCollection services) {
             services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<ITeamService, TeamService>();
+       
             return services;
+           
         }
+
 
         public static IServiceCollection ConfigureDbContext(this IServiceCollection services,
             IConfiguration configuration)

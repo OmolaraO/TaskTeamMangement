@@ -10,7 +10,7 @@ using TeamTaskManagement.Services.Interfaces;
 
 namespace TeamTaskManagement.Controllers
 {
-    [Route("teams/{teamId}/tasks")]
+    [Route("teams")]
     [ApiController]
     [Authorize]
     public class TasksController : BaseController
@@ -78,6 +78,8 @@ namespace TeamTaskManagement.Controllers
             return Ok("Task status updated.");
         }
 
+
+        [HttpGet("teams/{teamId}/tasks")]
         public async Task<IActionResult> GetTask(int taskId)
         {
             var currentUserId = int.Parse(User.FindFirst(JwtRegisteredClaimNames.Sub).Value);

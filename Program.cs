@@ -12,14 +12,17 @@ using TeamTaskManagement.Services.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Host.UseSerilog((ctx, lc) => lc
+Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
-    .ReadFrom.Configuration(ctx.Configuration));
+    .CreateLogger();
+
+builder.Host.UseSerilog();
+
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.ConfigureApplication();
+builder.Services.ConfigureApplication(); 
 builder.Services.ConfigureJwt(builder.Configuration);
 builder.Services.ConfigureDbContext(builder.Configuration);
 builder.Services.ConfigureSwagger();
@@ -41,7 +44,7 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI( );
 }
 
 app.UseHttpsRedirection();

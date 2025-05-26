@@ -11,8 +11,6 @@ namespace TeamTaskManagement.Controllers
     {
         
 
-        
-
         [HttpPost("register")]
         public async Task <IActionResult> Register([FromBody] RegisterDto registerDto, CancellationToken cancellationToken)
         {
